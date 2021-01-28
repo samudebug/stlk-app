@@ -1,0 +1,15 @@
+name: influencer_repository
+description: Dart package to manage Influencer database-related actions
+version: 1.0.0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.2.4
+  api_repository:
+    path: ../api_repository
+  authentication_repository:
+    path: ../authentication_repository
