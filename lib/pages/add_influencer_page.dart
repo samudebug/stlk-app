@@ -29,15 +29,26 @@ class AddInfluencerPage extends StatelessWidget {
                       Influencer(name: state.name.value, tags: state.tags);
                   influencersBloc
                       .add(InfluencersCreate(influencer: newInfluencer));
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => HomePage()),
-                      (route) => false);
                 }
               },
             );
           },
         ),
-        body: _loginForm(),
+        body: Padding(
+            padding: EdgeInsets.all(8),
+            child: BlocListener(
+              cubit: influencersBloc,
+              listener: (context, state) {
+                if (state is InfluencersCreated) {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => HomePage()),
+                      (route) => false);
+                }
+              },
+              child: _loginForm(),
+            )
+            // child: _loginForm(),
+            ),
       ),
     );
   }
@@ -46,12 +57,7 @@ class AddInfluencerPage extends StatelessWidget {
     const tagOptions = ['Youtuber', 'Streamer', 'Influencer'];
     return BlocListener<AddInfluencerCubit, AddInfluencerState>(
       listener: (context, state) {
-        if (state.status.isSubmissionFailure) {
-          Scaffold.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-                const SnackBar(content: Text("Ocorreu um erro ao salvar")));
-        }
+        print(state);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

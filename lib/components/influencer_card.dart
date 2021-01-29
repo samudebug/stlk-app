@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:influencer_repository/influencer_repository.dart';
 
 class InfluencerCard extends StatelessWidget {
+  Influencer influencer;
+  InfluencerCard({@required this.influencer});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,10 +37,10 @@ class InfluencerCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "HeyTails",
+                          influencer.name,
                           style: TextStyle(fontSize: 24),
                         ),
-                        Text("Youtuber, Streamer",
+                        Text(influencer.tags.join(", "),
                             style: TextStyle(
                                 fontSize: 14, color: Color(0x80000000)))
                       ],

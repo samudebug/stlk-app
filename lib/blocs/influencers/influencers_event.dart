@@ -24,3 +24,5 @@ class InfluencersCreate extends InfluencersEvent {
   @override
   List<Object> get props => [influencer];
 }
+
+class InfluencerCreateSuccess extends InfluencersEvent {}

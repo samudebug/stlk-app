@@ -32,6 +32,9 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
       await createInfluencer(event.influencer);
       return;
     }
+    if (event is InfluencerCreateSuccess) {
+      yield InfluencersCreated();
+    }
   }
 
   Future<void> fetchInfluencers() async {
@@ -41,5 +44,6 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
 
   Future<void> createInfluencer(Influencer influencer) async {
     await influencerRepository.createInfluencer(influencer);
+    add(InfluencerCreateSuccess());
   }
 }

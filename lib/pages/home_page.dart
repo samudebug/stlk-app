@@ -59,7 +59,9 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemCount: state.influencers.length,
               itemBuilder: (context, index) {
-                return InfluencerCard();
+                return InfluencerCard(
+                  influencer: state.influencers[index],
+                );
               },
             );
           }

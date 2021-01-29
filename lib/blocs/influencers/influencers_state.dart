@@ -28,3 +28,5 @@ class InfluencersLoaded extends InfluencersState {
     return "InfluencersLoaded: {influencers: ${influencers.length}}";
   }
 }
+
+class InfluencersCreated extends InfluencersState {}
