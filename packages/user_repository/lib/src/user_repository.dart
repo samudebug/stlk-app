@@ -9,7 +9,7 @@ class UserRepository {
   Future<void> getDbId(uid, idToken) async {
     try {
       Map<String, String> headers = {'auth': idToken};
-      dynamic response = await apiRepository.performGet(
+      await apiRepository.performGet(
           'https://stlk-api.herokuapp.com/auth/login',
           headers: headers);
     } on Exception {

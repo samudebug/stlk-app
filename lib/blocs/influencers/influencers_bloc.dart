@@ -19,7 +19,6 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   Stream<InfluencersState> mapEventToState(
     InfluencersEvent event,
   ) async* {
-    final currentState = state;
     if (event is LoadInfluencers) {
       yield InfluencersLoading();
       fetchInfluencers();
@@ -27,11 +26,20 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
     }
     if (event is InfluencersLoadSuccess) {
       yield InfluencersLoaded(influencers: event.influencers);
+      return;
+    }
+    if (event is InfluencersCreate) {
+      await createInfluencer(event.influencer);
+      return;
     }
   }
 
   Future<void> fetchInfluencers() async {
     List<Influencer> result = await influencerRepository.getInfluencers();
     add(InfluencersLoadSuccess(influencers: result));
+  }
+
+  Future<void> createInfluencer(Influencer influencer) async {
+    await influencerRepository.createInfluencer(influencer);
   }
 }

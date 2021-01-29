@@ -32,4 +32,20 @@ class InfluencerRepository {
       throw InfluencerActionFailed();
     }
   }
+
+  Future<void> createInfluencer(Influencer influencer) async {
+    try {
+      String idToken = await _authenticationRepository.currentUser.firebaseUser
+          .getIdToken(true);
+      Map<String, String> headers = {
+        'auth': idToken,
+        "Content-Type": "application/json"
+      };
+      await _apiRepository.performPost(
+          'https://stlk-api.herokuapp.com/influencers', influencer.toJson(),
+          headers: headers);
+    } on Exception {
+      throw InfluencerActionFailed();
+    }
+  }
 }

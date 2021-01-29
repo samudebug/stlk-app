@@ -27,6 +27,8 @@ dependencies:
   flutter_bloc: ^6.1.1 
   equatable: ^1.2.5
   flutter_svg: ^0.19.1
+  formz: ^0.3.2
+  multiselect_formfield: ^0.1.5
   authentication_repository:
     path: packages/authentication_repository
   api_repository:

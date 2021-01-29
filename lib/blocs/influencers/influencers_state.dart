@@ -25,7 +25,6 @@ class InfluencersLoaded extends InfluencersState {
 
   @override
   String toString() {
-    // TODO: implement toString
     return "InfluencersLoaded: {influencers: ${influencers.length}}";
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:influencer_repository/influencer_repository.dart';
 import 'package:stlk/blocs/influencers/influencers_bloc.dart';
 import 'package:stlk/components/influencer_card.dart';
+import 'package:stlk/pages/add_influencer_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,17 +18,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => InfluencersBloc(
-            influencerRepository: context.read<InfluencerRepository>())
-          ..add(LoadInfluencers()),
-        child: _body(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
+    return BlocProvider(
+      create: (context) => InfluencersBloc(
+          influencerRepository: context.read<InfluencerRepository>())
+        ..add(LoadInfluencers()),
+      child: Scaffold(
+          body: _body(),
+          floatingActionButton: BlocBuilder<InfluencersBloc, InfluencersState>(
+            builder: (context, state) {
+              return FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => AddInfluencerPage(
+                            influencersBloc: context.read<InfluencersBloc>(),
+                          )));
+                },
+              );
+            },
+          )),
     );
   }
 

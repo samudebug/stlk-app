@@ -11,6 +11,5 @@ class User extends Equatable {
   static const empty = User(id: '', firebaseUser: null);
 
   @override
-  // TODO: implement props
   List<Object> get props => [id, firebaseUser];
 }

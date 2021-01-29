@@ -13,7 +13,6 @@ class AuthenticationUnknown extends AuthenticationState {
   final User user;
 
   @override
-  // TODO: implement props
   List<Object> get props => [user];
 }
 
@@ -23,7 +22,6 @@ class AuthenticationAuthenticated extends AuthenticationState {
   final User user;
 
   @override
-  // TODO: implement props
   List<Object> get props => [user];
 }
 
@@ -32,6 +30,5 @@ class AuthenticationUnauthenticated extends AuthenticationState {
 
   final User user;
   @override
-  // TODO: implement props
   List<Object> get props => [user];
 }
