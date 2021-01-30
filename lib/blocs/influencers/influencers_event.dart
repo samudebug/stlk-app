@@ -26,3 +26,11 @@ class InfluencersCreate extends InfluencersEvent {
 }
 
 class InfluencerCreateSuccess extends InfluencersEvent {}
+
+class InfluencerCreateSocialMedia extends InfluencersEvent {
+  final SocialMedia socialMedia;
+  const InfluencerCreateSocialMedia({this.socialMedia});
+
+  @override
+  List<Object> get props => [socialMedia];
+}

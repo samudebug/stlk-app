@@ -29,4 +29,15 @@ class APIRepository {
     }
     return jsonDecode(response.body);
   }
+
+  Future<dynamic> performPut(String url, Map body, {Map headers}) async {
+    http.Response response =
+        await http.put(url, body: jsonEncode(body), headers: headers);
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      print(response.statusCode);
+      print(response.body);
+      throw APIError(response.statusCode);
+    }
+    return jsonDecode(response.body);
+  }
 }

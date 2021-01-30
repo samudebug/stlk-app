@@ -1,4 +1,5 @@
 import 'package:api_repository/api_repository.dart';
+import 'package:influencer_repository/src/models/social_media.dart';
 import 'package:meta/meta.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 
@@ -43,6 +44,24 @@ class InfluencerRepository {
       };
       await _apiRepository.performPost(
           'https://stlk-api.herokuapp.com/influencers', influencer.toJson(),
+          headers: headers);
+    } on Exception {
+      throw InfluencerActionFailed();
+    }
+  }
+
+  Future<void> addSocialMedia(
+      String influencerId, SocialMedia socialMedia) async {
+    try {
+      String idToken = await _authenticationRepository.currentUser.firebaseUser
+          .getIdToken(true);
+      Map<String, String> headers = {
+        'auth': idToken,
+        "Content-Type": "application/json"
+      };
+      await _apiRepository.performPut(
+          'https://stlk-api.herokuapp.com/influencers/$influencerId/socialMedia',
+          socialMedia.toJson(),
           headers: headers);
     } on Exception {
       throw InfluencerActionFailed();

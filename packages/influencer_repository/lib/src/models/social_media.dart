@@ -8,4 +8,8 @@ class SocialMedia {
     handle = json['handle'];
     uid = json['uid'];
   }
+
+  Map<String, dynamic> toJson() {
+    return {"name": name, "handle": handle, "uid": uid};
+  }
 }

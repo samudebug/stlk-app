@@ -45,15 +45,13 @@ class AddInfluencerPage extends StatelessWidget {
                       (route) => false);
                 }
               },
-              child: _loginForm(),
-            )
-            // child: _loginForm(),
-            ),
+              child: _addInfluencerForm(),
+            )),
       ),
     );
   }
 
-  Widget _loginForm() {
+  Widget _addInfluencerForm() {
     const tagOptions = ['Youtuber', 'Streamer', 'Influencer'];
     return BlocListener<AddInfluencerCubit, AddInfluencerState>(
       listener: (context, state) {

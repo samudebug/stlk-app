@@ -3,6 +3,7 @@ import './social_media.dart';
 import 'social_media.dart';
 
 class Influencer {
+  String id;
   String name;
   List<dynamic> tags;
   List<SocialMedia> socialMedias;
@@ -10,6 +11,7 @@ class Influencer {
   Influencer({this.name, this.tags, this.socialMedias});
 
   Influencer.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     name = json['name'];
     tags = json['tags'].map((item) => item.toString()).toList();
     if (json['social_medias'] != null) {
