@@ -37,6 +37,8 @@ dependencies:
     path: packages/user_repository
   influencer_repository:
     path: packages/influencer_repository
+  messaging_repository:
+    path: packages/messaging_repository
 
 
   # The following adds the Cupertino Icons font to your application.

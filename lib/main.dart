@@ -9,6 +9,7 @@ import 'package:stlk/pages/login_page.dart';
 import 'package:stlk/pages/splash_page.dart';
 import 'package:api_repository/api_repository.dart';
 import 'package:user_repository/user_repository.dart';
+import 'package:messaging_repository/messaging_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ void main() async {
   InfluencerRepository influencerRepository = InfluencerRepository(
       apiRepository: apiRepository,
       authenticationRepository: authenticationRepository);
+  MessagingRepository messagingRepository = MessagingRepository();
   runApp(App(
       authenticationRepository: authenticationRepository,
       userRepository: UserRepository(
