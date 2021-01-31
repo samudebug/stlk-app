@@ -17,7 +17,8 @@ class Influencer {
     if (json['social_medias'] != null) {
       socialMedias = json['social_medias']
           .map((item) => SocialMedia.fromJson(item))
-          .toList();
+          .toList()
+          .cast<SocialMedia>();
     }
   }
 

@@ -1,5 +1,6 @@
 import 'package:api_repository/api_repository.dart';
 import 'package:influencer_repository/src/models/social_media.dart';
+import 'package:influencer_repository/src/models/twitter_profile.dart';
 import 'package:meta/meta.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 
@@ -50,6 +51,20 @@ class InfluencerRepository {
     }
   }
 
+  Future<List<TwitterProfile>> searchTwitterProfile(String handle) async {
+    try {
+      String idToken = await _authenticationRepository.currentUser.firebaseUser
+          .getIdToken(true);
+      Map<String, String> headers = {"auth": idToken};
+      List result = await _apiRepository.performGet(
+          "https://stlk-api.herokuapp.com/twitter/search?search=$handle",
+          headers: headers);
+      return result.map((e) => TwitterProfile.fromJson(e)).toList();
+    } on Exception {
+      throw InfluencerActionFailed();
+    }
+  }
+
   Future<void> addSocialMedia(
       String influencerId, SocialMedia socialMedia) async {
     try {
@@ -63,6 +78,20 @@ class InfluencerRepository {
           'https://stlk-api.herokuapp.com/influencers/$influencerId/socialMedia',
           socialMedia.toJson(),
           headers: headers);
+    } on Exception {
+      throw InfluencerActionFailed();
+    }
+  }
+
+  Future<Influencer> getInfluencer(String influencerId) async {
+    try {
+      String idToken = await _authenticationRepository.currentUser.firebaseUser
+          .getIdToken(true);
+      Map<String, String> headers = {"auth": idToken};
+      Map result = await _apiRepository.performGet(
+          "https://stlk-api.herokuapp.com/influencers/$influencerId",
+          headers: headers);
+      return Influencer.fromJson(result);
     } on Exception {
       throw InfluencerActionFailed();
     }

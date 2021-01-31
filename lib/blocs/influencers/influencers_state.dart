@@ -30,3 +30,16 @@ class InfluencersLoaded extends InfluencersState {
 }
 
 class InfluencersCreated extends InfluencersState {}
+
+class InfluencerLoading extends InfluencersState {}
+
+class InfluencerCreateSocialMediaSuccess extends InfluencersState {}
+
+class InfluencerLoaded extends InfluencersState {
+  final Influencer influencer;
+  InfluencerLoaded({this.influencer});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [influencer];
+}

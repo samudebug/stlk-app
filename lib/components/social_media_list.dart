@@ -35,11 +35,9 @@ class SocialMediaCard extends StatelessWidget {
                 child: SizedBox(
                   width: 70,
                   height: 70,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(70),
-                      color: Color(0xFFC4C4C4),
-                    ),
+                  child: CircleAvatar(
+                    backgroundColor: Color(0xFFC4C4C4),
+                    backgroundImage: NetworkImage(socialMedia.profilePicUrl),
                   ),
                 ),
               ),
@@ -51,12 +49,18 @@ class SocialMediaCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        (socialMedia.socialMediaName != 'youtube' ||
+                                socialMedia.socialMediaName != 'twitch'
+                            ? Text(
+                                "@${socialMedia.handle}",
+                                style: TextStyle(fontSize: 24),
+                              )
+                            : Text(
+                                socialMedia.handle,
+                                style: TextStyle(fontSize: 24),
+                              )),
                         Text(
-                          socialMedia.handle,
-                          style: TextStyle(fontSize: 24),
-                        ),
-                        Text(
-                            "${socialMedia.name.toUpperCase()}${socialMedia.name.substring(1)}",
+                            "${socialMedia.socialMediaName[0].toUpperCase()}${socialMedia.socialMediaName.substring(1)}",
                             style: TextStyle(
                                 fontSize: 14, color: Color(0x80000000)))
                       ],

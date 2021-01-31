@@ -28,9 +28,30 @@ class InfluencersCreate extends InfluencersEvent {
 class InfluencerCreateSuccess extends InfluencersEvent {}
 
 class InfluencerCreateSocialMedia extends InfluencersEvent {
+  final String influencerId;
   final SocialMedia socialMedia;
-  const InfluencerCreateSocialMedia({this.socialMedia});
+  const InfluencerCreateSocialMedia({this.socialMedia, this.influencerId});
 
   @override
-  List<Object> get props => [socialMedia];
+  List<Object> get props => [socialMedia, influencerId];
+}
+
+class InfluencerSocialMediaCreated extends InfluencersEvent {}
+
+class InfluencersLoadInfluencer extends InfluencersEvent {
+  final String influencerId;
+  InfluencersLoadInfluencer({this.influencerId});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [influencerId];
+}
+
+class InfluencerLoadSuccess extends InfluencersEvent {
+  final Influencer influencer;
+  InfluencerLoadSuccess({this.influencer});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [influencer];
 }

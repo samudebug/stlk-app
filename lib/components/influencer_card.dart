@@ -27,12 +27,19 @@ class InfluencerCard extends StatelessWidget {
                         child: SizedBox(
                           width: 70,
                           height: 70,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(70),
-                              color: Color(0xFFC4C4C4),
-                            ),
-                          ),
+                          child: (influencer.socialMedias != null &&
+                                  influencer.socialMedias.length > 0
+                              ? CircleAvatar(
+                                  backgroundColor: Color(0xFFC4C4C4),
+                                  backgroundImage: NetworkImage(
+                                      influencer.socialMedias[0].profilePicUrl),
+                                )
+                              : DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(70),
+                                    color: Color(0xFFC4C4C4),
+                                  ),
+                                )),
                         ),
                       ),
                     )),

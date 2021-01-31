@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:influencer_repository/influencer_repository.dart';
 import 'package:stlk/components/social_media_list.dart';
-import 'package:stlk/pages/edit_influcencer_page.dart';
+import 'package:stlk/pages/edit_influencer_page.dart';
 
 class InfluencerDetails extends StatelessWidget {
   final Influencer influencer;
@@ -30,12 +30,19 @@ class InfluencerDetails extends StatelessWidget {
                     child: SizedBox(
                       height: 150,
                       width: 150,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Color(0xFFC4C4C4),
-                        ),
-                      ),
+                      child: (influencer.socialMedias != null &&
+                              influencer.socialMedias.length > 0
+                          ? CircleAvatar(
+                              backgroundColor: Color(0xFFC4C4C4),
+                              backgroundImage: NetworkImage(
+                                  influencer.socialMedias[0].profilePicUrl),
+                            )
+                          : DecoratedBox(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(70),
+                                color: Color(0xFFC4C4C4),
+                              ),
+                            )),
                     ),
                   ),
                 ),
