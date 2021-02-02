@@ -3,7 +3,7 @@ description: Dart package to manage Influencer database-related actions
 version: 1.0.0
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,3 +13,5 @@ dependencies:
     path: ../api_repository
   authentication_repository:
     path: ../authentication_repository
+  messaging_repository:
+    path: ../messaging_repository

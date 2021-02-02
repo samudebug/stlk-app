@@ -17,16 +17,18 @@ void main() async {
   const apiRepository = APIRepository();
   AuthenticationRepository authenticationRepository =
       AuthenticationRepository();
+  MessagingRepository messagingRepository = MessagingRepository();
   InfluencerRepository influencerRepository = InfluencerRepository(
       apiRepository: apiRepository,
-      authenticationRepository: authenticationRepository);
-  MessagingRepository messagingRepository = MessagingRepository();
+      authenticationRepository: authenticationRepository,
+      messagingRepository: messagingRepository);
   runApp(App(
       authenticationRepository: authenticationRepository,
       userRepository: UserRepository(
         apiRepository: apiRepository,
       ),
-      influencerRepository: influencerRepository));
+      influencerRepository: influencerRepository,
+      messagingRepository: messagingRepository));
 }
 
 class App extends StatelessWidget {
@@ -34,7 +36,8 @@ class App extends StatelessWidget {
       {Key key,
       @required this.authenticationRepository,
       @required this.userRepository,
-      @required this.influencerRepository})
+      @required this.influencerRepository,
+      @required this.messagingRepository})
       : assert(authenticationRepository != null),
         assert(userRepository != null),
         assert(influencerRepository != null),
@@ -43,6 +46,7 @@ class App extends StatelessWidget {
   final AuthenticationRepository authenticationRepository;
   final UserRepository userRepository;
   final InfluencerRepository influencerRepository;
+  final MessagingRepository messagingRepository;
 
   @override
   Widget build(BuildContext context) {

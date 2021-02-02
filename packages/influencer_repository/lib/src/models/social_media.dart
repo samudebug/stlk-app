@@ -4,6 +4,7 @@ class SocialMedia {
   String handle;
   String uid;
   String profilePicUrl;
+  String registrationToken;
 
   SocialMedia(
       {this.name,
@@ -26,7 +27,8 @@ class SocialMedia {
       "handle": handle,
       "uid": uid,
       "profile_pic_url": profilePicUrl,
-      "social_media_name": socialMediaName
+      "social_media_name": socialMediaName,
+      "registration_token": registrationToken
     };
   }
 }
